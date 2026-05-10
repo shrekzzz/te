@@ -1,0 +1,259 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.leftCol { display: flex; flex-direction: column; }
+
+.heading {
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin: 20px 0 0;
+  line-height: 1.1;
+  transition: color 0.4s;
+}
+
+.bio {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-top: 20px;
+  transition: color 0.4s;
+}
+
+/* Trait cards */
+.traitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.traitCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  cursor: default;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+
+.traitCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--shine-border), transparent);
+}
+
+.traitCard::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 45%;
+  background: var(--shine-top);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.traitCard:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+.traitIcon { font-size: 24px; flex-shrink: 0; margin-top: 2px; position: relative; z-index: 1; }
+
+.traitTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s;
+}
+
+.traitDesc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s;
+}
+
+/* Right column */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+}
+
+/* Timeline card */
+.timelineCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-md);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.timelineCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--shine-border), transparent);
+}
+
+.timelineCard::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: var(--shine-top);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.timelineTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s;
+}
+
+.timeline { position: relative; display: flex; flex-direction: column; }
+
+.timelineLine {
+  position: absolute;
+  left: 8px; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+}
+
+.timelineItem {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineItem:last-child { padding-bottom: 0; }
+
+.timelineDot {
+  flex-shrink: 0;
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  border: 1.5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.timelineDotInner {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timelineContent { display: flex; flex-direction: column; gap: 4px; }
+
+.timelineYear {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.timelineEvent {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  transition: color 0.4s;
+}
+
+/* Quote card */
+.quoteCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: 18px;
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  transition: all 0.4s;
+}
+
+.quoteCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.quoteIcon {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  color: var(--accent);
+  opacity: 0.15;
+  position: absolute;
+  top: -12px; left: 20px;
+  line-height: 1;
+}
+
+.quoteText {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 12px;
+  transition: color 0.4s;
+}
+
+.quoteAuthor {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; gap: 60px; }
+  .rightCol { position: static; }
+}
+
+@media (max-width: 600px) { .traitGrid { grid-template-columns: 1fr; } }

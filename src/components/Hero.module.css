@@ -1,0 +1,524 @@
+/* ─── Hero wrapper ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ─── Background ─── */
+.bg {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.bgBase {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-bg);
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* Orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.orb1 {
+  width: 520px; height: 520px;
+  left: -120px; top: -80px;
+  background: var(--orb1);
+}
+.orb2 {
+  width: 380px; height: 380px;
+  right: 5%; top: 10%;
+  background: var(--orb2);
+}
+.orb3 {
+  width: 280px; height: 280px;
+  left: 40%; bottom: 5%;
+  background: var(--orb1);
+}
+
+/* ─── Floating shapes ─── */
+.floatShape {
+  position: absolute;
+  border: 1px solid var(--border-accent);
+  border-radius: 30%;
+  pointer-events: none;
+  transform: rotate(45deg);
+  background: transparent;
+  transition: border-color 0.4s;
+}
+
+/* ─── Particles ─── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ─── Content ─── */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  padding-top: 100px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* ─── LEFT ─── */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 36px;
+  align-self: flex-start;
+  transition: all 0.4s;
+}
+
+.badgeDot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dotPulse 2s infinite;
+}
+
+@keyframes dotPulse {
+  0%,100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50%      { box-shadow: 0 0 0 8px transparent; }
+}
+
+.badgeBar {
+  width: 1px; height: 14px;
+  background: var(--border-accent);
+}
+
+.badgeYear {
+  opacity: 0.6;
+}
+
+/* Heading */
+.headingBlock {
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.headLine {
+  display: block;
+  overflow: hidden;
+}
+
+.headWord {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 7vw, 112px);
+  font-weight: 900;
+  color: var(--hero-heading);
+  line-height: 1.0;
+  display: block;
+  transition: color 0.4s;
+}
+
+.headWordStroke {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 7vw, 112px);
+  font-weight: 900;
+  line-height: 1.0;
+  display: block;
+  -webkit-text-stroke: 1.5px var(--accent);
+  color: transparent;
+  transition: all 0.4s;
+}
+
+.rotatingWordWrap {
+  height: clamp(56px, 7.6vw, 122px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.headAccent {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 7vw, 112px);
+  font-weight: 900;
+  line-height: 1.0;
+  display: block;
+  background: linear-gradient(130deg, var(--accent-pale) 0%, var(--accent) 45%, var(--accent-deep) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 40px var(--accent-glow));
+}
+
+/* Subtext */
+.subtext {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 500px;
+  margin-bottom: 40px;
+  transition: color 0.4s;
+}
+
+/* CTA Row */
+.ctaRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+
+/* Stats */
+.statsRow {
+  display: flex;
+  gap: 0;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-right: none;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  backdrop-filter: blur(12px);
+}
+
+.statItem::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--shine-border), transparent);
+}
+
+.statItem::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: var(--shine-top);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.statItem:first-child { border-radius: 12px 0 0 12px; }
+.statItem:last-child  { border-radius: 0 12px 12px 0; border-right: 1px solid var(--border-subtle); }
+
+.statItem:hover {
+  background: var(--accent-dim);
+  border-color: var(--border-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 28px var(--accent-glow);
+}
+
+.statVal {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent-pale), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.statLbl {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s;
+}
+
+/* ─── RIGHT ─── */
+.rightCol {
+  position: relative;
+  height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Destination card stack */
+.cardStack {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  height: 160px;
+  perspective: 1000px;
+}
+
+.destCard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 22px 26px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(20px);
+  transition: border-color 0.3s;
+  border-top-color: var(--card-accent, var(--border-accent));
+}
+
+.destCard:hover {
+  border-color: var(--border-accent);
+}
+
+.cardShine {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: var(--shine-top);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.cardInner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.destEmoji {
+  font-size: 36px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.destName {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  transition: color 0.4s;
+}
+
+.destSub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-top: 3px;
+  transition: color 0.4s;
+}
+
+.destDot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-left: auto;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* Map card */
+.mapCard {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(20px);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.mapShine {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: var(--shine-top);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.mapLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.mapVisual {
+  height: 110px;
+  position: relative;
+  z-index: 1;
+}
+
+.mapSvg { overflow: visible; }
+
+.mapBadge {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+  transition: color 0.4s;
+}
+
+/* Floating badge pills */
+.floatBadge1, .floatBadge2 {
+  position: absolute;
+  padding: 9px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+  transition: all 0.4s;
+}
+
+.floatBadge1 {
+  top: 200px;
+  right: 0;
+}
+
+.floatBadge2 {
+  top: 260px;
+  left: 0;
+}
+
+/* Scroll cue */
+.scrollCue {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--accent-glow);
+  transform-origin: top;
+}
+
+.scrollLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.4s;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    min-height: unset;
+    padding-bottom: 60px;
+  }
+  .rightCol {
+    height: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .content { padding: 0 20px; padding-top: 100px; }
+  .cardStack, .mapCard { width: 290px; }
+  .floatBadge1, .floatBadge2 { display: none; }
+  .statsRow { flex-wrap: wrap; gap: 8px; }
+  .statItem { border-radius: 12px !important; border-right: 1px solid var(--border-subtle) !important; }
+}
